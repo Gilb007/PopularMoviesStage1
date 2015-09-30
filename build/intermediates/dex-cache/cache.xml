@@ -2,32 +2,46 @@
 <items version="2" >
 
     <item
-        jar="/Users/admin/Desktop/PopularMoviesStage1/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/classes.jar"
+        jar="/Users/admin/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp/2.5.0/4de2b4ed3445c37ec1720a7d214712e845a24636/okhttp-2.5.0.jar"
         jumboMode="false"
         revision="23.0.0"
-        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
-        <dex dex="/Users/admin/Desktop/PopularMoviesStage1/app/build/intermediates/pre-dexed/debug/classes-0edb1c8a959ed9272c70803c3b8a3e69943a5ad7.jar" />
+        sha1="4de2b4ed3445c37ec1720a7d214712e845a24636">
+        <dex dex="/Users/admin/Desktop/PopularMoviesStage1/app/build/intermediates/pre-dexed/debug/okhttp-2.5.0-9e1c80bb9f87ef131fe885e6bac34a8a7f606887.jar" />
     </item>
     <item
-        jar="/Users/admin/Desktop/PopularMoviesStage1/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/jars/classes.jar"
+        jar="/Users/admin/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit/adapter-rxjava/2.0.0-beta1/27db6ccd014c866500af30d92fbfad0e3cc99ee8/adapter-rxjava-2.0.0-beta1.jar"
         jumboMode="false"
         revision="23.0.0"
-        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
-        <dex dex="/Users/admin/Desktop/PopularMoviesStage1/app/build/intermediates/pre-dexed/debug/classes-66725f8861923e7aca33b6066ec9fbf50e315b0f.jar" />
+        sha1="27db6ccd014c866500af30d92fbfad0e3cc99ee8">
+        <dex dex="/Users/admin/Desktop/PopularMoviesStage1/app/build/intermediates/pre-dexed/debug/adapter-rxjava-2.0.0-beta1-67aa00e75bef7c7538a616cf79847f158d69d465.jar" />
     </item>
     <item
-        jar="/Users/admin/Desktop/PopularMoviesStage1/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/libs/internal_impl-23.0.1.jar"
+        jar="/Users/admin/Desktop/PopularMoviesStage1/app/build/intermediates/exploded-aar/io.reactivex/rxandroid/1.0.1/jars/classes.jar"
         jumboMode="false"
         revision="23.0.0"
-        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
-        <dex dex="/Users/admin/Desktop/PopularMoviesStage1/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.1-fcbe25c6e0eea91f3c1db7b80907cf57f5efe319.jar" />
+        sha1="aa81bfe8c5cc88c2472ca936ae71f0c3dd1766df">
+        <dex dex="/Users/admin/Desktop/PopularMoviesStage1/app/build/intermediates/pre-dexed/debug/classes-ab431842c2d5037a146764ca6cc9fd37761212fd.jar" />
     </item>
     <item
-        jar="/Users/admin/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.0.1/support-annotations-23.0.1.jar"
+        jar="/Users/admin/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit/converter-gson/2.0.0-beta1/3de922cdbf9bb3a6f72f6b6b3327cfb348cf445a/converter-gson-2.0.0-beta1.jar"
         jumboMode="false"
         revision="23.0.0"
-        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
-        <dex dex="/Users/admin/Desktop/PopularMoviesStage1/app/build/intermediates/pre-dexed/debug/support-annotations-23.0.1-c7d13e2abb8a4d174460e107d4623b3f17ff1c59.jar" />
+        sha1="3de922cdbf9bb3a6f72f6b6b3327cfb348cf445a">
+        <dex dex="/Users/admin/Desktop/PopularMoviesStage1/app/build/intermediates/pre-dexed/debug/converter-gson-2.0.0-beta1-d586a00de7812a3bf57e9fef23eb04a9b0474c22.jar" />
+    </item>
+    <item
+        jar="/Users/admin/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit/retrofit/2.0.0-beta1/53b5be42d6cf719ac1431b9aa9a4d5ab78856148/retrofit-2.0.0-beta1.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="53b5be42d6cf719ac1431b9aa9a4d5ab78856148">
+        <dex dex="/Users/admin/Desktop/PopularMoviesStage1/app/build/intermediates/pre-dexed/debug/retrofit-2.0.0-beta1-02cd4ce05ef9299b332626a8eacd978a16cac0bc.jar" />
+    </item>
+    <item
+        jar="/Users/admin/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.6.0/98476622f10715998eacf9240d6b479f12c66143/okio-1.6.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="98476622f10715998eacf9240d6b479f12c66143">
+        <dex dex="/Users/admin/Desktop/PopularMoviesStage1/app/build/intermediates/pre-dexed/debug/okio-1.6.0-94e1ff8ab73bdc8083f60fdd096154f52e9661ab.jar" />
     </item>
 
 </items>
