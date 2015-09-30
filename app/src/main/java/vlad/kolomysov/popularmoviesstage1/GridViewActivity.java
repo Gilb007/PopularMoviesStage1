@@ -32,11 +32,9 @@ import rx.schedulers.Schedulers;
 public class GridViewActivity extends AppCompatActivity
 {
 
-    private static final String TAG = GridViewActivity.class.getSimpleName();
     private GridView mGridView;
     private ProgressBar mProgressBar;
     private GridViewAdapter mGridAdapter;
-    private String FEED_URL = "http://javatechig.com/?json=get_recent_posts&count=45";
 
     TheMovieDBService theMovieDBService;
 
@@ -54,9 +52,7 @@ public class GridViewActivity extends AppCompatActivity
         mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         //Initialize with empty data
-      //  mGridData = new ArrayList<>();
-
-
+        //  mGridData = new ArrayList<>();
         //Start download
 
         mProgressBar.setVisibility(View.VISIBLE);
@@ -108,42 +104,18 @@ public class GridViewActivity extends AppCompatActivity
 
                     @Override
                     public void onNext(ListMoviesModel listMoviesModel) {
-                         Log.v("moviestage",listMoviesModel.results.get(1).overview);
+                        Log.v("moviestage",listMoviesModel.results.get(1).overview);
                         listFilm = listMoviesModel.results;
-
                         mGridAdapter = new GridViewAdapter(GridViewActivity.this, R.layout.row_grid, listFilm);
                         mGridView.setAdapter(mGridAdapter);
-
                         mGridAdapter.setGridData(listFilm);
 
 
                     }
                 });
 
-
-
     }
 
-
-
-
-
-
-
-        /*        mGridAdapter.setGridData(mGridData);
-
-                item = new GridItem();
-
-                //  добавили тайтл
-                item.setTitle(title);
-
-
-    //добавление картинки
-                        item.setImage(attachment.getString("url"));
-
-                //добавляем item в arraylist
-                mGridData.add(item);
-*/
 
 
 
