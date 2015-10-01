@@ -36,7 +36,7 @@ public class GridViewActivity extends AppCompatActivity
     private ProgressBar mProgressBar;
     private GridViewAdapter mGridAdapter;
 
-    TheMovieDBService theMovieDBService;
+
 
     List<Film> listFilm;
 
@@ -74,43 +74,41 @@ public class GridViewActivity extends AppCompatActivity
             }
         });*/
 
+        // 3
+        // настраеваем адаптер, присваиваем URL
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Constants.SERVICE_ENDPOINT)
-                .addConverterFactory(GsonConverterFactory.create())
+                .baseUrl(Constants.SERVICE_ENDPOINT) // API base URL
+                .addConverterFactory(GsonConverterFactory.create()) // A converter which uses Gson for JSON.
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .build();
+                .build(); // Create the Retrofit instances.
 
-        theMovieDBService = retrofit.create(TheMovieDBService.class);
+        // 4
+        //Create an implementation of the API defined by the service interface.
+        TheMovieDBService theMovieDBService = retrofit.create(TheMovieDBService.class);
 
         theMovieDBService.getListFilm(Constants.API_KEY_TMDB,"1")
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.newThread()) // работаем в не главном потоке
+                .observeOn(AndroidSchedulers.mainThread()) // результат передать главному потоку
                 .subscribe(new Subscriber<ListMoviesModel>() {
                     @Override
                     public void onCompleted() {
-
-                        Log.v("moviestage","completed");
-
-                        Toast.makeText(GridViewActivity.this,"ListMoviesModel",Toast.LENGTH_LONG).show();
+                        Toast.makeText(GridViewActivity.this, "закончили работу!", Toast.LENGTH_LONG).show();
                         mProgressBar.setVisibility(View.GONE);
-
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.v("moviestage","error "+e.toString());
+                        Log.v("moviestage", "error - ошибка " + e.toString());
 
                     }
 
                     @Override
                     public void onNext(ListMoviesModel listMoviesModel) {
-                        Log.v("moviestage",listMoviesModel.results.get(1).overview);
+                        // что делаем с результатом listMoviesModel
                         listFilm = listMoviesModel.results;
                         mGridAdapter = new GridViewAdapter(GridViewActivity.this, R.layout.row_grid, listFilm);
                         mGridView.setAdapter(mGridAdapter);
                         mGridAdapter.setGridData(listFilm);
-
-
                     }
                 });
 
