@@ -39,6 +39,7 @@ public class GridViewActivity extends AppCompatActivity
 
 
     List<Film> listFilm;
+    TheMovieDBService theMovieDBService;
 
 
 
@@ -57,23 +58,6 @@ public class GridViewActivity extends AppCompatActivity
 
         mProgressBar.setVisibility(View.VISIBLE);
 
-        /*//обработка клика
-        mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-
-                //Get item at position
-                GridItem item = (GridItem) parent.getItemAtPosition(position);
-
-                //Pass the image title and url to DetailsActivity
-                Intent intent = new Intent(GridViewActivity.this, DetailsActivity.class);
-                intent.putExtra("title", item.getTitle());
-                intent.putExtra("image", item.getImage());
-
-                //Start details activity
-                startActivity(intent);
-            }
-        });*/
-
         // 3
         // настраеваем адаптер, присваиваем URL
         Retrofit retrofit = new Retrofit.Builder()
@@ -84,7 +68,7 @@ public class GridViewActivity extends AppCompatActivity
 
         // 4
         //Create an implementation of the API defined by the service interface.
-        TheMovieDBService theMovieDBService = retrofit.create(TheMovieDBService.class);
+        theMovieDBService = retrofit.create(TheMovieDBService.class);
 
         theMovieDBService.getListFilm(Constants.API_KEY_TMDB,"1")
                 .subscribeOn(Schedulers.newThread()) // работаем в не главном потоке
@@ -111,6 +95,70 @@ public class GridViewActivity extends AppCompatActivity
                         mGridAdapter.setGridData(listFilm);
                     }
                 });
+
+
+        mGridView.setOnScrollListener(new EndlessScrollListener() {
+            @Override
+            public boolean onLoadMore(int page, int totalItemsCount) {
+                Log.v("scroll", "page1 = ");
+                loadDataFromTheMDBAoi(5);
+                return true;
+            }
+        });
+
+
+
+    //    mGridView.setOnSc
+
+        /*//обработка клика
+        mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+
+                //Get item at position
+                GridItem item = (GridItem) parent.getItemAtPosition(position);
+
+                //Pass the image title and url to DetailsActivity
+                Intent intent = new Intent(GridViewActivity.this, DetailsActivity.class);
+                intent.putExtra("title", item.getTitle());
+                intent.putExtra("image", item.getImage());
+
+                //Start details activity
+                startActivity(intent);
+            }
+        });*/
+
+
+    }
+
+
+    public void loadDataFromTheMDBAoi(Integer page){
+
+        theMovieDBService.getListFilm(Constants.API_KEY_TMDB,page.toString())
+                .subscribeOn(Schedulers.newThread()) // работаем в не главном потоке
+                .observeOn(AndroidSchedulers.mainThread()) // результат передать главному потоку
+                .subscribe(new Subscriber<ListMoviesModel>() {
+                    @Override
+                    public void onCompleted() {
+                        Toast.makeText(GridViewActivity.this, "закончили работу!", Toast.LENGTH_LONG).show();
+                        mProgressBar.setVisibility(View.GONE);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.v("moviestage", "error - ошибка " + e.toString());
+
+                    }
+
+                    @Override
+                    public void onNext(ListMoviesModel listMoviesModel) {
+                        // что делаем с результатом listMoviesModel
+                        listFilm = listMoviesModel.results;
+                        mGridAdapter = new GridViewAdapter(GridViewActivity.this, R.layout.row_grid, listFilm);
+                        mGridView.setAdapter(mGridAdapter);
+                        mGridAdapter.setGridData(listFilm);
+                    }
+                });
+
 
     }
 
