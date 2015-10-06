@@ -45,7 +45,7 @@ public class GridViewActivity extends AppCompatActivity implements AbsListView.O
 
     private final static int ITEMS_PPAGE = 20;
 
-    private int mVisibleThreshold = 5;
+    private int mVisibleThreshold = 2;
     private int mCurrentPage = 0;
     private int mPreviousTotal = 0;
     private boolean mLoading = true;
@@ -95,24 +95,25 @@ public class GridViewActivity extends AppCompatActivity implements AbsListView.O
 
     public void loadData(String page)
     {
+
+        Log.v("filmload","loadData method");
         theMovieDBService.getListFilm(Constants.API_KEY_TMDB,page)
                 .subscribeOn(Schedulers.newThread()) // работаем в не главном потоке
                 .observeOn(AndroidSchedulers.mainThread()) // результат передать главному потоку
                 .subscribe(new Subscriber<ListMoviesModel>() {
                     @Override
-                    public void onCompleted() {
+                    public void onCompleted()
+                    {
                       //  Toast.makeText(GridViewActivity.this, "закончили работу!", Toast.LENGTH_LONG).show();
                         mProgressBar.setVisibility(View.GONE);
                         mLoading = false;
-                        Log.v("film","2 coml");
+                        Log.v("film","loadData method - onCompleted()");
                     }
-
                     @Override
                     public void onError(Throwable e) {
                         Log.v("moviestage", "error - ошибка " + e.toString());
 
                     }
-
                     @Override
                     public void onNext(ListMoviesModel listMoviesModel) {
                         // что делаем с результатом listMoviesModel
@@ -120,7 +121,7 @@ public class GridViewActivity extends AppCompatActivity implements AbsListView.O
                         mGridAdapter = new GridViewAdapter(GridViewActivity.this, R.layout.row_grid, listFilm);
                         mGridView.setAdapter(mGridAdapter);
                         mGridAdapter.setGridData(listFilm);
-                        Log.v("film", "2 onNext");
+                        Log.v("film","loadData method - onNext");
                     }
                 });
 
@@ -130,12 +131,20 @@ public class GridViewActivity extends AppCompatActivity implements AbsListView.O
 public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount)
 {
 
-    if (mLoading)
+    Log.v("film","mLastPage = "+mLastPage);
+    Log.v("film","mLoading = "+mLoading);
+    Log.v("film","totalItemCount = "+totalItemCount);
+    Log.v("film","visibleItemCount = "+visibleItemCount);
+    Log.v("film","firstVisibleItem = "+firstVisibleItem);
+    Log.v("film","mVisibleThreshold = "+mVisibleThreshold);
+
+    Log.v("film","onScroll method");
+    if (mLoading == true)
     {
         if (totalItemCount > mPreviousTotal)
         {
 
-            Log.v("film","3 if");
+            Log.v("film","mLoading = true"+mLoading);
             mLoading = false;
             mPreviousTotal = totalItemCount;
             mCurrentPage++;
@@ -147,10 +156,16 @@ public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCoun
             }
         }
     }
-    if (!mLastPage && !mLoading && (totalItemCount - visibleItemCount) <= (firstVisibleItem + mVisibleThreshold))
+    /*if (!mLastPage && !mLoading && (totalItemCount - visibleItemCount) <= (firstVisibleItem + mVisibleThreshold))
     {
-        Log.v("film","3 if 2222");
-        //new AddItemsAsyncTask().execute();
+
+        Log.v("film","(firstVisibleItem + mVisibleThreshold) = "+firstVisibleItem + mVisibleThreshold);
+
+        loadData("2");
+        mLoading = true;
+    }*/
+
+    if (firstVisibleItem == 18){
         loadData("2");
         mLoading = true;
     }
