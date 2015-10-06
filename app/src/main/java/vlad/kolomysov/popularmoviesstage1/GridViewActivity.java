@@ -29,7 +29,7 @@ import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-public class GridViewActivity extends AppCompatActivity
+public class GridViewActivity extends AppCompatActivity implements
 {
 
     private GridView mGridView;
@@ -97,14 +97,7 @@ public class GridViewActivity extends AppCompatActivity
                 });
 
 
-        mGridView.setOnScrollListener(new EndlessScrollListener() {
-            @Override
-            public boolean onLoadMore(int page, int totalItemsCount) {
-                Log.v("scroll", "page1 = ");
-                loadDataFromTheMDBAoi(5);
-                return true;
-            }
-        });
+
 
 
 
