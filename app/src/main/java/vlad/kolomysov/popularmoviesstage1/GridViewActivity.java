@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
@@ -39,8 +40,10 @@ public class GridViewActivity extends AppCompatActivity implements AbsListView.O
     private ProgressBar mProgressBar;
     private GridViewAdapter mGridAdapter;
 
-    List<Film> listFilm;
+    List<Film> mListFilm;
     TheMovieDBService theMovieDBService;
+
+    Intent mIntent;
     //____________________
 
     private final static int ITEMS_PPAGE = 20;
@@ -79,16 +82,25 @@ public class GridViewActivity extends AppCompatActivity implements AbsListView.O
 
         loadData("1");
 
+        mIntent = new Intent(GridViewActivity.this, DetailsActivity.class);
 
-  /*      for (int i = mCurrentPage * ITEMS_PPAGE; i < (mCurrentPage + 1) * ITEMS_PPAGE; i++)
-        {
-            Log.v("film","1");
+        mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.v("detail","title = "+mListFilm.get(position).original_title);
+                mIntent.putExtra( "original_title",mListFilm.get(position).original_title);
+                mIntent.putExtra( "poster_path",mListFilm.get(position).poster_path);
+                mIntent.putExtra( "overview",mListFilm.get(position).overview);
+                mIntent.putExtra( "vote_average",mListFilm.get(position).vote_average);
+                mIntent.putExtra( "release_date",mListFilm.get(position).release_date);
 
-            loadData();
-            //GridViewActivity.this.mGridAdapter.add(String.valueOf(Math.random() * 5000));
-        }
-//        GridViewActivity.this.mGridAdapter.notifyDataSetChanged();
-        loadData("4");*/
+                startActivity(mIntent);
+
+
+            }
+        });
+
+
     }
 
 
@@ -117,10 +129,10 @@ public class GridViewActivity extends AppCompatActivity implements AbsListView.O
                     @Override
                     public void onNext(ListMoviesModel listMoviesModel) {
                         // что делаем с результатом listMoviesModel
-                        listFilm = listMoviesModel.results;
-                        mGridAdapter = new GridViewAdapter(GridViewActivity.this, R.layout.row_grid, listFilm);
+                        mListFilm = listMoviesModel.results;
+                        mGridAdapter = new GridViewAdapter(GridViewActivity.this, R.layout.row_grid, mListFilm);
                         mGridView.setAdapter(mGridAdapter);
-                        mGridAdapter.setGridData(listFilm);
+                        mGridAdapter.setGridData(mListFilm);
                         Log.v("film","loadData method - onNext");
                     }
                 });

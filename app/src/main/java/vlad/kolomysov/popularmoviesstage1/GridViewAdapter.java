@@ -58,6 +58,8 @@ public class GridViewAdapter extends ArrayAdapter<Film> {
 
 
         Picasso.with(mContext).load("http://image.tmdb.org/t/p/w342/"+item.getPosterpath()).into(holder.imageView);
+
+        Log.v("picasso","http://image.tmdb.org/t/p/w342/"+item.getPosterpath());
         Log.v("moviestage",item.getPosterpath());
         return row;
     }
