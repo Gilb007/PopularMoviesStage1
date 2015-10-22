@@ -23,4 +23,11 @@
     <string name="lbl_gallery_name">Gallery directory name</string>
     <string name="lbl_btn_save">Save</string>
 
+    <!-- for menu -->
+    <string name="most_popular">most popular</string>
+    <string name="highest_rated">highest_rated</string>
+
+
+
+
 </resources>

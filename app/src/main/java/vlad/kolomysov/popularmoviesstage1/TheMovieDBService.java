@@ -14,7 +14,12 @@ import rx.Observable;
 public interface TheMovieDBService
 
 {
+    // for retrieving list of movie by number of page
     @GET("discover/movie")
     Observable<ListMoviesModel> getListFilm(@Query("api_key") String api_key, @Query("page") String page);
+
+    // for retrieving list of movie sorted by most popular or highest rated
+    @GET("discover/movie")
+    Observable<ListMoviesModel> getListFilmSortedBy(@Query("sort_by") String sort_by, @Query("api_key") String api_key);
 }
 

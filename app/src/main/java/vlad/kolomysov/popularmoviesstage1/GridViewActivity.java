@@ -6,6 +6,8 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AbsListView;
@@ -13,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -80,7 +83,7 @@ public class GridViewActivity extends AppCompatActivity implements AbsListView.O
         //Create an implementation of the API defined by the service interface.
         theMovieDBService = retrofit.create(TheMovieDBService.class);
 
-        loadData("1");
+        loadData("2");
 
         mIntent = new Intent(GridViewActivity.this, DetailsActivity.class);
 
@@ -132,11 +135,43 @@ public class GridViewActivity extends AppCompatActivity implements AbsListView.O
                         mListFilm = listMoviesModel.results;
                         mGridAdapter = new GridViewAdapter(GridViewActivity.this, R.layout.row_grid, mListFilm);
                         mGridView.setAdapter(mGridAdapter);
-                        mGridAdapter.setGridData(mListFilm);
+                       // mGridAdapter.setGridData(mListFilm);
                         Log.v("film","loadData method - onNext");
+
                     }
                 });
 
+    }
+
+    public  void loadDataSortBy(String sorting){
+
+        theMovieDBService.getListFilmSortedBy(sorting, Constants.API_KEY_TMDB)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<ListMoviesModel>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(ListMoviesModel listMoviesModel) {
+
+                        mGridAdapter.clear();
+                        mListFilm = listMoviesModel.results;
+                        mGridAdapter = new GridViewAdapter(GridViewActivity.this, R.layout.row_grid, mListFilm);
+                        mGridView.setAdapter(mGridAdapter);
+                        Log.v("menu", "most pop!!!");
+                       // mGr
+
+
+                    }
+                });
     }
 //**********************************
 @Override
@@ -144,7 +179,7 @@ public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCoun
 {
 
     Log.v("film","mLastPage = "+mLastPage);
-    Log.v("film","mLoading = "+mLoading);
+    Log.v("film", "mLoading = " + mLoading);
     Log.v("film","totalItemCount = "+totalItemCount);
     Log.v("film","visibleItemCount = "+visibleItemCount);
     Log.v("film","firstVisibleItem = "+firstVisibleItem);
@@ -187,6 +222,39 @@ public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCoun
     public void onScrollStateChanged(AbsListView view, int scrollState)
     {
 
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        // Операции для выбранного пункта меню
+        switch (id) {
+            case R.id.action_most_popular:
+                Log.v("menu","most pop");
+                mGridAdapter.clear();
+                loadDataSortBy(Constants.most_popular);
+                return true;
+            case R.id.action_highest_rated:
+              //  infoTextView.setText("Вы выбрали кошку!");
+                mGridAdapter.clear();
+                loadDataSortBy(Constants.highest_rated);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
 
