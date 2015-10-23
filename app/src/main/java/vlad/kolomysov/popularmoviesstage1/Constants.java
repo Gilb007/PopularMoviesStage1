@@ -11,7 +11,7 @@ package vlad.kolomysov.popularmoviesstage1;
 public class Constants
 {
 //
-    public static final String API_KEY_TMDB = "7c6c89132a5ebf7839844ad8427621ee";
+    public static final String API_KEY_TMDB = "paste your key here";
 
     public static final String SERVICE_ENDPOINT = "https://api.themoviedb.org/3/";
 

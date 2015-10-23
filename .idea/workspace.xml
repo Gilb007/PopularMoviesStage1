@@ -73,7 +73,7 @@
             <entry file="file://$PROJECT_DIR$/app/src/main/java/vlad/kolomysov/popularmoviesstage1/Constants.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.21452145">
-                  <caret line="13" column="79" selection-start-line="13" selection-start-column="47" selection-end-line="13" selection-end-column="79" />
+                  <caret line="13" column="66" selection-start-line="13" selection-start-column="66" selection-end-line="13" selection-end-column="66" />
                   <folding />
                 </state>
               </provider>
@@ -1640,10 +1640,10 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_details_view.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/vlad/kolomysov/popularmoviesstage1/Constants.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/vlad/kolomysov/popularmoviesstage1/GridViewActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/vlad/kolomysov/popularmoviesstage1/TheMovieDBService.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/java/vlad/kolomysov/popularmoviesstage1/Constants.java" />
       </list>
     </option>
   </component>
@@ -2325,7 +2325,7 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/vlad/kolomysov/popularmoviesstage1/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.21452145">
-          <caret line="13" column="79" selection-start-line="13" selection-start-column="47" selection-end-line="13" selection-end-column="79" />
+          <caret line="13" column="66" selection-start-line="13" selection-start-column="66" selection-end-line="13" selection-end-column="66" />
           <folding />
         </state>
       </provider>
