@@ -3,10 +3,11 @@ package vlad.kolomysov.popularmoviesstage1;
 import java.util.List;
 
 /**
- * Created by admin on 30.09.15.
+ * Copyright (C) Created by Vlad Kolomysov on 30.09.15.
  */
 // 2
-// модель фильма
+// Model for one Movie
+// Movie = Film
 public class Film
 {
     String adult;

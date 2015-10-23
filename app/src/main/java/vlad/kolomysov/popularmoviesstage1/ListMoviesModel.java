@@ -4,10 +4,11 @@ package vlad.kolomysov.popularmoviesstage1;
 import java.util.List;
 
 /**
- * Created by admin on 30.09.15.
+ * Copyright (C) Created by Vlad Kolomysov on 30.09.15.
  */
 // 2
-// модель для списка фильмов
+// Model for result that we will retrieve from IMDB server
+    // ListMoviesModel contains results, that contait list on Movies
 public class ListMoviesModel
 {
     String page;

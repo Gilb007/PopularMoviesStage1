@@ -6,11 +6,31 @@
     android:orientation="vertical">
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/purple.light"
+        android:layout_weight="6">
+
+
+        <TextView
+            android:id="@+id/original_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+
+            android:text="title"
+            android:textSize="20sp"
+            android:layout_marginLeft="2dp"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3">
+        android:layout_weight="70">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -23,45 +43,46 @@
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"/>
 
-            <TextView
-                android:id="@+id/original_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-
-                android:text="title"
-                android:textSize="20sp"
-                android:layout_marginLeft="2dp"
-                android:fontFamily="sans-serif"
-                android:textStyle="bold"
-                android:textColor="@android:color/holo_red_dark"/>
-
-            <TextView
-                android:id="@+id/vote_average"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="vote_average"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:textSize="24sp"
-                android:fontFamily="sans-serif"
-                android:textStyle="bold"
-                android:textColor="@android:color/holo_red_dark"/>
-
-            <TextView
-                android:id="@+id/release_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentBottom="true"
-                android:text="release_date"
-                android:textSize="24sp"
-                android:fontFamily="sans-serif"
-                android:textStyle="bold"
-                android:textColor="@android:color/holo_red_dark"/>
-
         </RelativeLayout>
 
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:background="@color/purple.light2">
+
+        <TextView
+            android:id="@+id/vote_average"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="vote_average"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:textSize="16sp"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:background="@color/purple.light3">
+
+        <TextView
+            android:id="@+id/release_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:text="release_date"
+            android:textSize="16sp"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -69,15 +90,19 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="30"
+        android:background="@color/purple">
 
         <TextView
             android:id="@+id/overview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="overview"
             android:layout_gravity="top"
             android:textSize="16sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:fontFamily="sans-serif"
+
+            />
 
 
     </LinearLayout>

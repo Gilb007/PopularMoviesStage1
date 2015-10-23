@@ -15,4 +15,9 @@
     <color name="white">#ffffff</color>
     <color name="settings_label">#323232</color>
 
+    <color name="purple.light">#F3E5F5</color>
+    <color name="purple.light2">#E1BEE7</color>
+    <color name="purple.light3">#CE93D8</color>
+    <color name="purple">#BA68C8</color>
+
 </resources>

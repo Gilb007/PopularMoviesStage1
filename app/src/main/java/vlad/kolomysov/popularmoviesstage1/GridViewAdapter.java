@@ -17,55 +17,55 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by admin on 28.09.15.
+ * Copyright (C) Created by Vlad Kolomysov on 28.09.15.
  */
+
+/**
+ * Adapter for our GridViewActivity
+ */
+
 public class GridViewAdapter extends ArrayAdapter<Film> {
 
     private Context mContext;
-    private int layoutResourceId;
-    private List<Film> listFilm = new ArrayList<Film>();
+    private int mLayoutResourceId;
+    private List<Film> mListFilm = new ArrayList<Film>();
 
+    // Adapter's constructor
     public GridViewAdapter(Context mContext, int layoutResourceId, List<Film> listFilm) {
         super(mContext, layoutResourceId, listFilm);
-        this.layoutResourceId = layoutResourceId;
+        this.mLayoutResourceId = layoutResourceId;
         this.mContext = mContext;
-        this.listFilm = listFilm;
+        this.mListFilm = listFilm;
     }
 
 
-    public void setGridData(List<Film> listFilm) {
-        this.listFilm = listFilm;
-        notifyDataSetChanged();
-    }
-
+    // for each item in grid set image poster and returt row's view
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
         View row = convertView;
         ViewHolder holder;
 
+        // set holder
         if (row == null) {
             LayoutInflater inflater = ((Activity) mContext).getLayoutInflater();
-            row = inflater.inflate(layoutResourceId, parent, false);
+            row = inflater.inflate(mLayoutResourceId, parent, false);
             holder = new ViewHolder();
-           // holder.titleTextView = (TextView) row.findViewById(R.id.grid_item_title);
             holder.imageView = (ImageView) row.findViewById(R.id.grid_item_image);
             row.setTag(holder);
         } else {
             holder = (ViewHolder) row.getTag();
         }
 
-        Film item = listFilm.get(position);
+        Film item = mListFilm.get(position);
 
-
+// Use Picasso for loading image
         Picasso.with(mContext).load("http://image.tmdb.org/t/p/w342/"+item.getPosterpath()).into(holder.imageView);
 
-   //     Log.v("picasso","http://image.tmdb.org/t/p/w342/"+item.getPosterpath());
-      //  Log.v("moviestage",item.getPosterpath());
         return row;
     }
 
     static class ViewHolder {
-        TextView titleTextView;
         ImageView imageView;
     }
 }

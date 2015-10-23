@@ -13,9 +13,22 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 /**
- * Created by admin on 29.09.15.
+ * Copyright (C) Created by Vlad Kolomysov on 29.09.15.
  */
-public class DetailsActivity extends ActionBarActivity {
+
+
+/**
+ *  Activity for details movie
+ *
+ *  title
+ *  overview
+ *  image poster
+ *  average vote
+ *  release date
+ *
+ */
+
+public class DetailsViewActivity extends Activity {
 
     private TextView mTitle;
     private ImageView mImage;
@@ -36,29 +49,25 @@ public class DetailsActivity extends ActionBarActivity {
         mVoteAverage = (TextView) findViewById(R.id.vote_average);
         mReleaseDate = (TextView) findViewById(R.id.release_date);
 
-
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
-
         Intent intent = getIntent();
 
+        // Step 1 - get data that were passed throuh intent in GridViewActivity
+        // Step 2 - set learned data to UI elements detail activity
+
         String title = intent.getStringExtra("original_title");
-        Log.v("detail","title = "+title);
         mTitle.setText(title);
 
         String image = intent.getStringExtra("poster_path");
-        Log.v("detail","image = "+image);
-        Picasso.with(this).load("http://image.tmdb.org/t/p/w342/"+image).into(mImage);
+        Picasso.with(this).load("http://image.tmdb.org/t/p/w342/" + image).into(mImage);
 
         String overview = intent.getStringExtra("overview");
-        mOverview.setText(overview);
+        mOverview.setText("Overview: "+overview);
 
         String voteAverage = intent.getStringExtra("vote_average");
-        Log.v("detail","voteAverage = "+voteAverage);
-        mVoteAverage.setText(voteAverage);
+        mVoteAverage.setText("Average vote:   "+voteAverage);
 
         String releaseDate = intent.getStringExtra("release_date");
-        mReleaseDate.setText(releaseDate);
+        mReleaseDate.setText("Release date:   "+releaseDate);
 
 
     }

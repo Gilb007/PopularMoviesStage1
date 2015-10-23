@@ -5,12 +5,15 @@ import retrofit.http.Query;
 import rx.Observable;
 
 /**
- * Created by admin on 30.09.15.
+ * Copyright (C) Created by Vlad Kolomysov on 30.09.15.
  */
-// 1
-// ретрофит сервис
-// запрос идет на https://api.themoviedb.org/3/discover/movie?api_key=7c6c89132a5ebf7839844ad8427621ee&page=2 - получить список фильмов
-// public static final String SERVICE_ENDPOINT = "https://api.themoviedb.org/3/";
+
+/**
+ * interface TheMovieDBService with three methods
+  Retrofit + RxJava
+  public static final String SERVICE_ENDPOINT = "https://api.themoviedb.org/3/";
+ */
+
 public interface TheMovieDBService
 
 {
@@ -18,8 +21,15 @@ public interface TheMovieDBService
     @GET("discover/movie")
     Observable<ListMoviesModel> getListFilm(@Query("api_key") String api_key, @Query("page") String page);
 
-    // for retrieving list of movie sorted by most popular or highest rated
+    // for retrieving list of movie sorted by most popular
     @GET("discover/movie")
-    Observable<ListMoviesModel> getListFilmSortedBy(@Query("sort_by") String sort_by, @Query("api_key") String api_key);
+    Observable<ListMoviesModel> getListFilmSortedByMostPopular(@Query("sort_by") String sort_by, @Query("api_key") String api_key);
+
+
+    // for retrieving list of movie sorted by highest rated
+    @GET("discover/movie")
+    Observable<ListMoviesModel>  getListFilmSortedByHighestRated(@Query("sort_by") String sort_by, @Query("vote_count.gte") String vote_count
+            ,@Query("api_key") String api_key);
+
 }
 
